@@ -1,6 +1,8 @@
 package _04_Searching_With_Streams;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
 
@@ -10,12 +12,15 @@ public class StreamSearcher {
 	// use Streams to help us out.
 	public long containsCount(String[] strArr, String strToCount) {
 		//2. Convert the String array to a stream
-		
+		ArrayList<String> strAL = new ArrayList<String>();
+		for(int i=0;i<strArr.length;i++) {
+			strAL.add(strArr[i]);
+		}
+		Stream<String> str = strAL.stream();
 		//3. Use the filter method with a lambda to extract all the String
 		//   elements that match the String parameter.
-		
+		str = str.filter((e) -> e.equals(strToCount));
 		//4. Return the count of the filtered stream.
-		
-		return 0;
+		return str.count();
 	}
 }
